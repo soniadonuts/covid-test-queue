@@ -1,0 +1,35 @@
+<h3 class="my-4">My Test</h3>
+<% if @tests.present? %>
+    <table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Test ID</th>
+            <th scope="col">Test Date</th>
+            <th scope="col">Actual test date</th>
+            <th scope="col">Status</th>
+            <th scope="col">Created At</th>
+            <th scope="col">Updated at</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @tests.each do |test| %>
+            <tr>
+                <td><%= test.id %></td>
+                <td><%= test.test_date %></td>
+                <td>
+                    <% if test.actual_test_date.present? %>
+                        <%= test.actual_test_date %>
+                    <% else %>
+                        -
+                    <% end %>
+                </td>
+                <td><%= test.test_status %></td>
+                <td><%= test.created_at %></td>
+                <td><%= test.updated_at %></td>   
+            </tr>
+        <% end %>
+    </tbody>
+    </table>
+<% else %>
+    <p>You haven't registered for COVID-19 test yet.</p>
+<% end %>

@@ -1,0 +1,31 @@
+<h3 class="my-4">List of registrants</h3>
+<% if @users.present? %>
+    <table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Citizen ID</th>
+            <th scope="col">Full Name</th>
+            <th scope="col">Gender</th>
+            <th scope="col">DOB</th>
+            <th scope="col">Address</th>
+            <th scope="col">Contact Number</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @users.each do |user| %>
+            <tr>
+                <td><%= user.citizen_id %></td>
+                <td><%= user.name %> <%= user.surname %></td>
+                <td><%= user.gender %></td>
+                <td><%= user.dob %></td>
+                <td><%= user.address %></td>
+                <td><%= user.contact_number %></td>   
+                <td><%= link_to "View Tests", show_tests_path(id: user.id) %></td> 
+            </tr>
+        <% end %>
+    </tbody>
+    </table>
+<% else %>
+    <p>You haven't registered for COVID-19 test yet.</p>
+<% end %>

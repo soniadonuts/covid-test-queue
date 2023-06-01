@@ -1,0 +1,20 @@
+<h3 class="my-4">Update Test</h3>
+
+<%= form_with model: @test, url: edit_test_path(@test), method: :patch, local: true do |form| %>
+    <% if @test.actual_test_date.nil? %>
+    <div class="mb-3">
+        <%= form.label :actual_test_date, "Actual Test Date:" %><br/>
+        <%= form.date_field :actual_test_date %>
+    </div>
+    <% end %>
+
+    <div class="mb-3">
+            <%= form.label :test_status, "Test Status:" %><br/>
+            <%= form.select :test_status, ['waiting', 'tested - waiting for result', 'tested - negative', 'tested - positive'] %>
+        </div>
+
+    <div class="mt-3">
+        <%= form.submit "Update Test" %>
+    </div>
+
+<% end %>

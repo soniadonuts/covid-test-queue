@@ -1,3 +1,14 @@
-<div class="d-flex align-items-center justify-content-center">
+<div class="d-flex align-items-center justify-content-center my-4">
     <h1>COVID-19 Test Queuing System</h1>
 </div>
+
+<% if Current.user %>
+    <% if Current.user.user_role == 1 %>
+        <%= render partial: "home/admin" %>
+    <% else %>
+        <%= render partial: "home/general_user" %>
+        <%= render partial: "home/my_test" %>
+    <% end %>
+<% else %>
+    <p>Please Login to use our system</p>
+<% end %>

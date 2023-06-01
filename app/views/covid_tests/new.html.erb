@@ -1,0 +1,13 @@
+<h1 class="my-4">New Test Request</h1>
+
+<%= form_with model: @covid_test, url: new_test_path, local: true do |form| %>
+    <div class="mb-3">
+        <%= form.label :test_date, "Test date:" %><br/>
+        <%= form.date_field :test_date %>
+    </div>
+
+    <div class="mt-3">
+        <%= form.submit "Send Request" %>
+    </div>
+
+<% end %>

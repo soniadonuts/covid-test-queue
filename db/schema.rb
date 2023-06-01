@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_05_31_150339) do
+ActiveRecord::Schema.define(version: 2023_05_31_190042) do
+
+  create_table "covid_tests", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "user_id"
+    t.date "test_date", null: false
+    t.date "actual_test_date"
+    t.string "test_status", default: "waiting", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_covid_tests_on_user_id"
+  end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
@@ -26,4 +36,5 @@ ActiveRecord::Schema.define(version: 2023_05_31_150339) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "covid_tests", "users"
 end
