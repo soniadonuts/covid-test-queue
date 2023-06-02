@@ -13,7 +13,7 @@
 ActiveRecord::Schema.define(version: 2023_05_31_190042) do
 
   create_table "covid_tests", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.bigint "user_id"
+    t.bigint "user_id", null: false
     t.date "test_date", null: false
     t.date "actual_test_date"
     t.string "test_status", default: "waiting", null: false
@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 2023_05_31_190042) do
     t.string "password_digest", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["citizen_id"], name: "index_users_on_citizen_id", unique: true
   end
 
   add_foreign_key "covid_tests", "users"

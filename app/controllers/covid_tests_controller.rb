@@ -1,5 +1,7 @@
 class CovidTestsController < ApplicationController
     before_action :require_user_logged_in, only: [:edit, :update]
+    before_action :must_be_admin, only: [:show, :edit, :update]
+
 
     def new
         @covid_test = CovidTest.new

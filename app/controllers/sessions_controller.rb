@@ -1,4 +1,7 @@
 class SessionsController < ApplicationController
+
+    before_action :only_guest_user, only: [:new, :create]
+
     def new
     end
 

@@ -1,4 +1,7 @@
 class RegistrationsController < ApplicationController
+
+    before_action :only_guest_user, only: [:new, :create]
+    
     def new
         @user = User.new
     end

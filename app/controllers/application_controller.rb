@@ -7,28 +7,15 @@ class ApplicationController < ActionController::Base
         end
     end
 
+    def only_guest_user
+        redirect_to root_path, notice: "You are already logged in" if Current.user.present?
+    end
+
     def require_user_logged_in
         redirect_to sign_in_path, alert: "You must be signed in to do that" if Current.user.nil?
     end
 
     def must_be_admin
-        redirect_to root_path, alert: "Only admin can do this action" unless Current.user.user_role = 1
+        redirect_to root_path, alert: "Only admin can do this action" unless Current.user.user_role == 1
     end
 end
-
-
-# FinancesController < ApplicationController
-#   before_filter :must_be_admin, only: :edit
-
-#   def edit
-#     ...
-#   end
-
-#   private
-
-#   def must_be_admin
-#     unless current_user && current_user.admin?
-#       redirect_to root_path, notice: "Some message"
-#     end
-#   end
-# end
