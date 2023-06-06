@@ -3,6 +3,7 @@
 </div>
 
 <% if Current.user %>
+    <hr/>
     <% if Current.user.user_role == 1 %>
         <%= render partial: "home/admin" %>
     <% else %>
